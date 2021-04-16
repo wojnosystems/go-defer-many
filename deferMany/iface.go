@@ -1,6 +1,6 @@
 package deferMany
 
-type Deferrer interface {
+type Defer interface {
 	// Defer should be passed to a defer block in the method that is calling Add to add items.
 	// this ensures that, should an error occur, any items put into Add are cleaned up before returning.
 	Defer()
