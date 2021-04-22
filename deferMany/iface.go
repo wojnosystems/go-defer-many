@@ -10,4 +10,7 @@ type Defer interface {
 
 	// Return gives back a function that will execute all of the tasks that were Add'ed
 	Return() (allTasks func())
+
+	// Discard prevents all previously Add'ed tasks from running when Defer or Return are called
+	Discard()
 }

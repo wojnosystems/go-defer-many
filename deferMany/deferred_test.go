@@ -44,3 +44,16 @@ func TestDeferred_ReturnDoesNotExecuteOnReturn(t *testing.T) {
 	cancel()
 	assert.True(t, actual)
 }
+
+func TestDeferred_DiscardDoesNotExecuteAddedAfterBeingCalled(t *testing.T) {
+	actual := false
+	func() {
+		d := New()
+		defer d.Defer()
+		d.Add(func() {
+			actual = true
+		})
+		d.Discard()
+	}()
+	assert.False(t, actual)
+}

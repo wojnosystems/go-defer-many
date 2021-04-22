@@ -27,3 +27,7 @@ func (d *deferred) Return() func() {
 		}
 	}
 }
+
+func (d *deferred) Discard() {
+	d.tasks = []func(){}
+}
